@@ -15,7 +15,7 @@
 uint8_t i2c_addr = 0x68;
 
 // 전역 변수
-float roll = 0.0f, pitch = 0.0f, yaw = 0.0f;
+//float roll = 0.0f, pitch = 0.0f, yaw = 0.0f;
 unsigned long lastTime = 0;
 float bias_gx = 0, bias_gy = 0, bias_gz = 0;
 

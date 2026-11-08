@@ -30,6 +30,8 @@ float ypr[3];        // [yaw, pitch, roll]   각도 저장 배열
 
 int initIMU()
 {
+    Wire.setSCL(PA8);
+    Wire.setSDA(PC9);
     Wire.begin();
     Wire.setClock(400000);
     // Wire.setWireTimeout(3000, true); // STM32Duino 구버전이면 주석 처리 유지
@@ -103,7 +105,7 @@ float getPitchIMU()
     mpu.dmpGetQuaternion(&q, fifoBuffer);
 
     // 2. 쿼터니언을 이용해 중력 벡터 계산
-    //mpu.dmpGetGravity(&gravity, &q);
+    // mpu.dmpGetGravity(&gravity, &q);
 
     // 3. 쿼터니언과 중력 벡터를 이용해 정확한 Yaw/Pitch/Roll 분리
     //    이 함수가 회전(Yaw)과 기울기(Pitch/Roll)를 섞이지 않게 해줍니다.

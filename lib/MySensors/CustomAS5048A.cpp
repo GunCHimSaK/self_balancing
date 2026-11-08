@@ -16,8 +16,9 @@ void CustomAS5048A::init()
 
 float CustomAS5048A::getSensorAngle()
 {
-    spi->beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE1));
+    spi->beginTransaction(SPISettings(500000, MSBFIRST, SPI_MODE1));
     digitalWrite(cs_pin, LOW);
+    delayMicroseconds(1); 
     uint16_t raw_data = spi->transfer16(0xFFFF);
     digitalWrite(cs_pin, HIGH);
     spi->endTransaction();
