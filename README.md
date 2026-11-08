@@ -12,15 +12,18 @@ BLDC 모터 2개로 균형을 잡는 2륜 셀프 밸런싱 로봇입니다. 이�
 ## 시스템 구조
 
 ```
-┌──────── Raspberry Pi 4B ────────┐   CAN 500kbps    ┌───────────────── STM32 F446RE ─────────────────┐
-│ 카메라 → 차선 인식 → throttle/steer │ ───────────────▶ │ CAN 수신 (ID 0x100)                             │
-│ (raspberry_pi/can_sender.py)    │  MCP2515 ↔ TJA1050│                                                │
-└─────────────────────────────────┘                  │ BNO055(I2C) → 기울기 ─┐ 캐스케이드 PID ┐           │
-                                                     │                               ├─▶ FOC 토크 제어 │
-                                                     │ AS5048A(SPI1/SPI2) → 회전자 각도 ┘   (SimpleFOC)  │
-                                                     └───────────────┬────────────────┬───────────────┘
-                                                              SimpleFOC Shield A   SimpleFOC Shield B
-                                                                GM4108 모터 A        GM4108 모터 B
+[Raspberry Pi 4B]  카메라 → 차선 인식 → throttle / steer
+        │  CAN 500kbps (MCP2515 HAT ↔ TJA1050), ID 0x100
+        ▼
+[STM32 NUCLEO-F446RE]
+   BNO055 (I2C1) ──▶ 현재 기울기 ──────────────┐
+   AS5048A ×2 (SPI1/SPI2) ──▶ 바퀴 속도 ──▶ 속도 PID ──▶ 목표 기울기
+                                               ▼
+                                     기울기 PID ──▶ 토크 명령 ± steering
+                                               ▼
+                               SimpleFOC 토크 제어 (FOC)
+        ├─ SimpleFOC Shield A → GM4108 모터 A
+        └─ SimpleFOC Shield B → GM4108 모터 B
 ```
 
 ## 제어 구조
