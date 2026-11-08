@@ -1,0 +1,80 @@
+(footprint "SW_Rocker_KCD1-101_21x15mm_P10.0mm"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -20.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "0072771b-147c-4e9f-8533-92640371a43b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "SW_Rocker_KCD1-101_21x15mm_P10.0mm"
+		(at 0 15 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "f38197ac-f810-4af2-af46-915bdc084b77")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6b50e92a-c780-4df9-9d10-e2eaa12c933a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "378bcda5-5c86-4730-a889-ef48b01e684d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_text user "${REFERENCE}"
+		(at 0 16.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "9e280161-e720-43cf-8637-0382c42ebeb0")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole roundrect
+		(at 0 0)
+		(size 2.54 1.27)
+		(drill 0.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.15)
+		(thermal_bridge_angle 45)
+		(uuid "3c546353-a058-4d42-a091-f446dbe8fd41")
+	)
+	(embedded_fonts no)
+)
